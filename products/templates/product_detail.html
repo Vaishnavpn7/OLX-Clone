@@ -1,4 +1,6 @@
+
 {% extends 'base.html' %}
+{% load static %}
 
 {% block body %}
 
@@ -6,31 +8,32 @@
 	<div class="single-page main-grid-border">
 		<div class="container">
 			<ol class="breadcrumb" style="margin-bottom: 5px;">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="all-classifieds.html">All Ads</a></li>
+{#				<li><a href="{% url 'index' %}">Home</a></li>#}
+				<li><a href="{% url 'list' %}">All Ads</a></li>
 				<li class="active"><a href="mobiles.html">Mobiles</a></li>
 				<li class="active">Mobile Phone</li>
 			</ol>
 			<div class="product-desc">
 				<div class="col-md-7 product-view">
-					<h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry</h2>
-					<p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a>, <a href="#">city</a>| Added at 06:55 pm, Ad ID: 987654321</p>
+					<h2>{{ product_detail.name}}</h2>
+					<p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a>, <a href="#">city</a>| Added at
+                        {{ product_detail.created_date}}</p>
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="images/ss1.jpg">
-								<img src="images/ss1.jpg" />
-							</li>
-							<li data-thumb="images/ss2.jpg">
-								<img src="images/ss2.jpg" />
-							</li>
-							<li data-thumb="images/ss3.jpg">
-								<img src="images/ss3.jpg" />
+                            {% for image in product_images %}
+
+
+							<li data-thumb="{{ image.images.url }}">
+								<img src="{{ image.images.url }}" />
+
+                            {% endfor %}
+
 							</li>
 						</ul>
 					</div>
 					<!-- FlexSlider -->
-					  <script defer src="js/jquery.flexslider.js"></script>
-					<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+					  <script defer src="{% static 'js/jquery.flexslider.js' %}"></script>
+					<link rel="stylesheet" href="{% static 'css/flexslider.css' %}" type="text/css" media="screen" />
 
 						<script>
 					// Can also be used with $(document).ready()
@@ -43,10 +46,9 @@
 					</script>
 					<!-- //FlexSlider -->
 					<div class="product-details">
-						<h4>Brand : <a href="#">Company name</a></h4>
+						<h4>Owner : <a href="#">{{ product_detail.owner }}</a></h4>
 						<h4>Views : <strong>150</strong></h4>
-						<p><strong>Display </strong>: 1.5 inch HD LCD Touch Screen</p>
-						<p><strong>Summary</strong> : It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+						<p><strong>Summary:</strong> {{ product_detail.description }}</p>
 
 					</div>
 				</div>
@@ -54,7 +56,7 @@
 					<div class="item-price">
 						<div class="product-price">
 							<p class="p-price">Price</p>
-							<h3 class="rate">$ 259</h3>
+							<h3 class="rate">Rs. {{ product_detail.price }} </h3>
 							<div class="clearfix"></div>
 						</div>
 						<div class="condition">
@@ -64,7 +66,7 @@
 						</div>
 						<div class="itemtype">
 							<p class="p-price">Item Type</p>
-							<h4>Phones</h4>
+							<h4>{{ product_detail.category }}</h4>
 							<div class="clearfix"></div>
 						</div>
 					</div>

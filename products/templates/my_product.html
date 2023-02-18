@@ -4,35 +4,7 @@
 <!-- Products -->
 	<div class="total-ads main-grid-border">
 		<div class="container">
-			<div class="all-categories">
-				<h3> Select your category and find the perfect ad</h3>
-				<ul class="all-cat-list">
-                    {% for catagory in catagory_list %}
-
-                        <li><a href="{% url 'list_category' catagory.slug %}">{{ catagory }} <span class="num-of-ads">( {{ catagory.total_products}} )</span></a></li>
-
-                    {% endfor %}
-
-				</ul>
-			</div>
-			<ol class="breadcrumb" style="margin-bottom: 5px;">
-{#			  <li><a href="index.html">Home</a></li>#}
-                <li class="active"><a href="{% url 'list' %}">All Ads</a></li>
-                {% if category %}
-                    <li class="active"><a href="{% url 'list' %}">{{ category}}</a></li>
-
-                {% endif %}
-			</ol>
 			<div class="ads-grid">
-{#				<div class="side-bar col-md-3">#}
-{#					<div class="search-hotel">#}
-{#					<h3 class="sear-head">Name contains</h3>#}
-{#					<form>#}
-{#						<input type="text" value="Product name..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Product name...';}" required="">#}
-{#						<input type="submit" value=" ">#}
-{#					</form>#}
-{#				</div>#}
-{#				</div>#}
 				<div class="ads-display col-md-9">
 					<div class="wrapper">
 					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">

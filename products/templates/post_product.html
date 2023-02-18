@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+
+<!-- Submit Ad -->
+	<div class="submit-ad main-grid-border">
+		<div class="container">
+			<h2 class="head">Post an Ad</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <input type="submit" value="create" >
+
+
+
+            </form>
+			<div class="post-ad-form">
+				<form action="" method="post">
+                    {% csrf_token %}
+					<label for="id_category">Select Category <span>*</span></label>
+					<select class="" required id="id_category" name="category" >
+					  <option value="selected">Select Category</option>
+					  <option value="2">Mobiles</option>
+					  <option value="3">Electronics and Appliances</option>
+					  <option value="4">Cars</option>
+					  <option value="5">Bikes</option>
+					  <option value="6">Furniture</option>
+					  <option value="7">Books</option>
+					  <option value="9">Sports</option>
+					  <option value="10">Shoes</option>
+					  <option value="11">Others</option>
+					</select>
+					<div class="clearfix"></div>
+					<label for="id_name">Ad Title <span>*</span></label>
+					<input type="text" name="name" id="id_name" class="phone" placeholder="">
+                    <div class="clearfix"></div>
+					<label for="id_price">Price <span>*</span></label>
+					<input type="text" name="price" id="id_price" class="phone" placeholder="">
+					<div class="clearfix"></div>
+					<label for="id_description">Ad Description <span>*</span></label>
+					<textarea class="mess" name="description" id="id_description" required placeholder="Write few lines about your product"></textarea>
+					<div class="clearfix"></div>
+				<div class="upload-ad-photos">
+				<label for="id_image">Photos for your ad :</label>
+					<div class="photos-upload-view">
+	                        <input type="file" id="fileselect" name="image" accept="image/*" id="id_image" />
+						</div>
+						<div>
+							<input type="submit" value="Post">
+						</div>
+                </div>
+                </form>
+					<div class="clearfix"></div>
+						<script src="js/filedrag.js"></script>
+				</div>
+					<div class="personal-details">
+					</div>
+                    <input type="submit" value="Post">
+
+			</div>
+		</div>
+	</div>
+
+
+{% endblock body %}
+
+	<!-- // Submit Ad -->
