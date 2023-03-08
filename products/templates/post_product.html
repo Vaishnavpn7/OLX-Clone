@@ -7,15 +7,15 @@
 	<div class="submit-ad main-grid-border">
 		<div class="container">
 			<h2 class="head">Post an Ad</h2>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-
-                <input type="submit" value="create" >
-
-
-
-            </form>
+{#            <form action="" method="post">#}
+{#                {% csrf_token %}#}
+{#                {{ form.as_p }}#}
+{##}
+{#                <input type="submit" value="create" >#}
+{##}
+{##}
+{##}
+{#            </form>#}
 			<div class="post-ad-form">
 				<form action="" method="post">
                     {% csrf_token %}
@@ -45,7 +45,7 @@
 				<div class="upload-ad-photos">
 				<label for="id_image">Photos for your ad :</label>
 					<div class="photos-upload-view">
-	                        <input type="file" id="fileselect" name="image" accept="image/*" id="id_image" />
+	                        <input type="file" name="image" accept="image/*" id="id_image" required>
 						</div>
 						<div>
 							<input type="submit" value="Post">
@@ -57,7 +57,7 @@
 				</div>
 					<div class="personal-details">
 					</div>
-                    <input type="submit" value="Post">
+{#                    <input type="submit" value="Post">#}
 
 			</div>
 		</div>

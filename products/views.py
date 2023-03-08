@@ -69,7 +69,7 @@ class ProductView(CreateView):
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
-        messages.success(self.request, 'task created')
+        messages.success(self.request, 'product added')
         return super().form_valid(form)
 
 
@@ -106,9 +106,8 @@ def productlist(request, category_slug=None):
 # class ProductDetailView(View):
 
 @signin_requrird
-def productdetail(request, *args, **kwargs):
-    pid = kwargs.get('id')
-    productdetail = Products.objects.get(id=pid)
+def productdetail(request, product_slug):
+    productdetail = Products.objects.get(slug=product_slug)
     productimage = ProductImage.objects.filter(product=productdetail)
     template = 'product_detail.html'
     context = {'product_detail': productdetail, 'product_images': productimage}

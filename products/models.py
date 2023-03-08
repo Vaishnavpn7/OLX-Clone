@@ -11,6 +11,12 @@ class Products(models.Model):
     created_date = models.DateField(auto_now_add=True)
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)
     image = models.ImageField(upload_to='product_main_image', blank=True, null=True)
+    slug = models.SlugField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug and self.name:
+            self.slug = slugify(self.name)
+        super(Products, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
